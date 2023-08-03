@@ -171,27 +171,161 @@ print (f"Ejercicio 18: El segundo número más grande es {segundo_mas_grande(lis
 
 """19. Ejercicio: Define una función que tome dos listas y retorne True si tienen al menos un miembro en común, de lo contrario, retorne False."""
 lista1 = [1,3,5,7,9]
-lista2 = [2,3,4,6,8,9]
+lista2 = [2,3,4,6,8]
 
 def comun_listas (lista1, lista2):
-  repetido = [n for n in lista1 if n in lista2]
-print (comun_listas(lista1, lista2))
-
+  return bool (set(lista1)&set(lista2))
+print (f"Ejercicio 19: {comun_listas(lista1, lista2)}")
 
 
 """20. Ejercicio: Define una función que tome una lista y retorne una nueva lista con los elementos de la lista original en orden inverso."""
+lista = [1,2,3,4,5]
+
+def lista_inversa(lista):
+  return lista[::-1]
+print(f"Ejercicio 20: La lista en orden inverso es {lista_inversa(lista)}")
+
+
 """21. Ejercicio: Define una función que reciba una cadena y cuente el número de dígitos y letras que contiene."""
+cadena = "Feliz 18 cumpleaños"
+
+def digitos_letras(cadena):
+  digitos = 0
+  letras = 0
+  for c in cadena:
+    if c.isdigit():
+      digitos +=1
+    elif c.isalpha():
+      letras +=1
+    else:
+      pass
+  return digitos, letras
+print(f"Ejercicio 21:{digitos_letras(cadena)}")
+
+
 """22. Ejercicio: Define una función que reciba una lista de números y retorne la suma acumulada de los números"""
+lista = [1,2,3,4,5]
+
+def suma_acumulada (lista):
+  total = 0
+  suma_acumulada = []
+  for numero in lista:
+    total += numero
+    suma_acumulada.append(total)
+  return suma_acumulada
+print (f"Ejercicio 22: {suma_acumulada(lista)}")
+
+
 """23. Ejercicio: Define una función que encuentre el elemento más común en una lista."""
+lista = [1,2,3,4,5,5,3,1,5]
+from collections import Counter
+def mas_comun (lista):
+  return Counter(lista).most_common(1)[0][0]
+print (f"Ejercicio 23: El elemento más repetido es el {mas_comun(lista)}")
+
+
 """24. Ejercicio: Define una función que tome un número y retorne un diccionario con la tabla de multiplicar de ese número del 1 al 10."""
+numero = 5
+
+def tabla_multiplicar (numero):
+  return {i:numero * i for i in range (1,11)}
+print(f"Ejercicio 24: {tabla_multiplicar(numero)}")
+
 """25. Ejercicio: Define una función que tome una cadena y retorne un diccionario con la cantidad de apariciones de cada caracter en la cadena."""
+
+print ("Ejercicio 25: ???")
+
 """26. Ejercicio: Define una función que tome dos listas y retorne la lista de elementos que no están en ambas listas."""
+lista1= [1,3,5,7,9]
+lista2 =[1,2,3,4,5,6,7,9]
+
+def elementos_diferentes(lista1, lista2):
+  return (set (lista1) ^ set(lista2))
+print(f"Ejercicio 26: Los elementos que no están en ambas listas son {elementos_diferentes(lista1, lista2)}")
+
+
 """27. Ejercicio: Define una función que tome una lista y retorne la lista sin duplicados."""
+lista = [1,2,4,6,8,10,2,4,10]
+
+def lista_unicos(lista):
+  return(set(lista))
+print (f"Ejercicio 27: La lista sin duplicados es: {lista_unicos(lista)}") 
+
+
 """28. Ejercicio: Define una función que reciba un número entero positivo y retorne la suma de los cuadrados de todos los números pares menores o iguales a ese número."""
+x = 10
+def suma_cuadrados_pares (x):
+  return sum(pow(i,2) for i in range (1,x) if i%2 == 0)
+print (f"Ejercicio 28: La suma de los cuadrados de los números pares inferiores a {x} es {suma_cuadrados_pares(x)}" )
+
+
 """29. Ejercicio: Define una función que reciba una lista de números y retorne el promedio de los números en la lista."""
+lista = [1,2,3,4,5]
+
+def promedio (lista):
+  return sum(lista)/len(lista)
+print (f"Ejercicio 29: El promedio de la lista {lista} es {promedio (lista)}")
+
 """30. Ejercicio: Define una función que reciba una lista de cadenas y retorne la cadena más larga en la lista."""
+lista = ["pato", "canguro", "delfin", "ave"]
+
+def cadena_larga(lista):
+  return max (lista, key=len)
+print (f"Ejercicio 30: La palabra más larga es {cadena_larga(lista)}")
+
+
 """31. Ejercicio: Define una función que reciba un número entero n y retorne una lista con los n primeros números primos."""
+n = 10
+
+def es_primo(n):
+  if n < 2:
+    return False
+  for i in range(2, int(n ** 0.5) + 1):
+    if n % i == 0:
+      return False
+  return True
+def primeros_n_primos(n):
+  primos = []
+  numero = 2
+  while len(primos) < n:
+    if es_primo(numero):
+      primos.append(numero)
+    numero += 1
+  return primos
+print(f"Ejercicio 31: Los primeros {n} números primos son {primeros_n_primos(n)}")
+
+
 """32. Ejercicio: Define una función que reciba una cadena y retorne la misma cadena pero con las palabras en orden inverso."""
+lista = ["casa", "perro", "sol", "estrella"]
+
+def lista_inversa (lista):
+ return lista[::-1]
+print (f"Ejercicio 32: {lista_inversa(lista)}")
+
 """33. Ejercicio: Escribe una función que reciba una lista de tuplas y retorne una lista ordenada basada en el último elemento de cada tupla."""
+tuplas = [(3,5), (1,9), (9,4)]
+
+def ordenar_ultimo_elemento (tuplas):
+  return sorted(tuplas, key=lambda x: x[-1])
+print (f"Ejercicio 33: {ordenar_ultimo_elemento(tuplas)}")
+
 """34. Ejercicio: Define una función que reciba una cadena y retorne la cantidad de letras vocales en la cadena."""
+cadena = "¿Como te encuentras?"
+def cuenta_vocales (cadena):
+  conteo = 0
+  for letra in cadena:
+    if letra.lower() in "aeiou":
+      conteo += 1
+  return conteo
+print (f"Ejercicio 34: En la cadena hay {cuenta_vocales(cadena)} vocales") 
+
 """35. Ejercicio: Define una función que reciba un número entero y retorne True si es un número primo, de lo contrario retorne False"""
+n = 10
+def primo (n):
+  if n < 2:
+    return False
+  for i in range (2, n):
+    if n % i == 0:
+      return False 
+  return True
+print (f"Ejercicio 35: {primo(n)}")
